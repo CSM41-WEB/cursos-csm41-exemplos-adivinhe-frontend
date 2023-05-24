@@ -1,7 +1,6 @@
 package aulas.web.adivinhe.entity;
 
 import java.io.Serializable;
-import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -11,7 +10,6 @@ import jakarta.validation.constraints.Size;
  * Representa o endereço e um jogador.
  * @author Wilson Horstmeyer Bogado
  */
-@Embeddable
 public class Endereco implements Serializable {
     
     @NotNull
