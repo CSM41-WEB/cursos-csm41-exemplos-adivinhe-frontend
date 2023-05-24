@@ -1,0 +1,49 @@
+.bloco {
+    width: 100%;
+    font-size: 12pt;
+    font-family: sans-serif;
+    margin-bottom: 1em;
+}
+
+div.bloco button.tentar {
+    margin-left: 1.25em;
+    font-weight: bold;
+}
+
+div.bloco button.desistir {
+    margin-left: 2em;
+    background-color: red;
+    font-weight: bold;
+}
+
+.mensagem {
+    width: 100%;
+}
+
+div.conteudo div.formulario {
+    width: max-content;
+    display: inline-block;
+    text-align: left;
+}
+
+div.inicio {
+    text-align: center;
+}
+
+div.inicio div.regras {
+    display: inline-block;
+    text-align: left;
+    width: max-content;
+    font-size: 12pt;
+    line-height: 20pt;
+}
+
+div.inicio div.regras h2 {
+    text-align: center;
+}
+
+label.label-default {
+    font-weight: bold;
+    text-align: right;
+    display: inline-block;
+}
