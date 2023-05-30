@@ -44,8 +44,8 @@
                     <p:messages globalOnly="true" showDetail="true"/>
                 </div>
                 <div class="bloco" style="text-align: center; margin: 1em 0 1em 0">
-                    <p:button value="Acesso" styleClass="tentar" style="margin-bottom: 1em"
-                              outcome="/acesso"/>
+                    <p:commandButton value="Sair" styleClass="tentar" style="margin-bottom: 1em"
+                                     action="#{acessoBean.logout}"/>
                 </div>
             </div>
         </h:form>

@@ -1,6 +1,7 @@
 package aulas.web.adivinhe.entity;
 
-import java.time.LocalDate;
+import jakarta.json.bind.annotation.JsonbDateFormat;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -11,7 +12,16 @@ public class JogoPK {
 
     private Integer jogador;
 
-    private LocalDate dataHora;
+    @JsonbDateFormat(Jogo.DATA_JOGO_PATTERN)
+    private ZonedDateTime dataHora;
+
+    public JogoPK() {
+    }
+
+    public JogoPK(Integer jogador, ZonedDateTime dataHora) {
+        this.jogador = jogador;
+        this.dataHora = dataHora;
+    }
 
     public Integer getJogador() {
         return jogador;
@@ -21,11 +31,11 @@ public class JogoPK {
         this.jogador = jogador;
     }
 
-    public LocalDate getDataHora() {
+    public ZonedDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(LocalDate dataHora) {
+    public void setDataHora(ZonedDateTime dataHora) {
         this.dataHora = dataHora;
     }
 

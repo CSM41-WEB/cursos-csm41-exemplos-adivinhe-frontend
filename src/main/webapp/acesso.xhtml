@@ -14,21 +14,21 @@
                     <div style="margin-bottom: 0.5em">
                         <p:outputLabel value="Usuário:" for="usuario"
                                        styleClass="label-default" style="width: 100px"/>
-                        <p:inputText id="usuario" value="#{jogadorBean.apelido}"
+                        <p:inputText id="usuario" value="#{acessoBean.usuario}"
                                      maxlength="30" required="true"/>
                         <p:message for="usuario"/>
                     </div>
                     <div>
                         <p:outputLabel value="Senha:" for="senha"
                                        styleClass="label-default" style="width: 100px"/>
-                        <p:password id="senha" value="#{jogoBean.senha}"
+                        <p:password id="senha" value="#{acessoBean.senha}"
                                     maxlength="16" required="true"/>
                         <p:message for="senha" severity="error"/>
                     </div>
                     <div class="bloco" style="text-align: center; margin-top: 2em">
                         <p:commandButton value="Entrar" styleClass="tentar"
                                          update="@all"
-                                         action="#{jogoBean.entrar}"/>
+                                         action="#{acessoBean.login}"/>
                         <p>Não tem cadastro? <p:link value="Cadastrar" outcome="cadastro"/></p>
                     </div>
                     <p:messages globalOnly="true"/>

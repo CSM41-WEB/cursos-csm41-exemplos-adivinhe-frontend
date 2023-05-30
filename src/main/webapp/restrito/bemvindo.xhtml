@@ -17,25 +17,6 @@
                         <li>Você pode tentar quantas vezes quiser.</li>
                         <li>Em quanto MENOS tentativas você acertar, MAIOR será a sua pontuação.</li>
                     </ul>
-                    <div>
-                    <div>
-                        <h4>Por favor, identifique-se:</h4>
-                        <div style="margin-bottom: 0.5em">
-                            <p:outputLabel value="Apelido:" for="apelido"
-                                           styleClass="label-default" style="width: 100px"/>
-                            <p:inputText id="apelido" value="#{jogadorBean.apelido}"
-                                         required="true" readonly="true"/>
-                            <p:message for="apelido"/>
-                        </div>
-                        <div>
-                            <p:outputLabel value="Nome:" for="nome"
-                                           styleClass="label-default" style="width: 100px"/>
-                            <p:inputText id="nome" value="#{jogadorBean.nome}"
-                                         required="true"/>
-                            <p:message for="nome" severity="error"/>
-                        </div>
-                    </div>
-                    </div>
                     <p>Boa sorte!</p>
                 </div>
                 <div class="bloco">
@@ -44,7 +25,7 @@
                                      action="#{jogoBean.iniciarJogo}"/>
                     <p:commandButton value="Sair" styleClass="tentar"
                                      update="@all" immediate="true"
-                                     action="#{jogoBean.sair}"/>
+                                     action="#{acessoBean.logout}"/>
                 </div>
             </div>
         </h:form>

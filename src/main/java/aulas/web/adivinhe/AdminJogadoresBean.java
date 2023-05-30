@@ -4,6 +4,7 @@ import aulas.web.adivinhe.entity.Jogador;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -23,6 +24,9 @@ public class AdminJogadoresBean implements Serializable {
     private static final String MSG_ERRO = "Não foi possível obter a lista de jogadores";
     
     private List<Jogador> jogadores;
+    
+    @Inject
+    private JogadorBean jogadorBean;
 
     public AdminJogadoresBean() {
     }
@@ -31,6 +35,7 @@ public class AdminJogadoresBean implements Serializable {
         if (jogadores == null) {
             try (Client client = ClientBuilder.newClient()) {
                 jogadores = client.target("http://localhost:8084/jogador/list")
+                        .register(jogadorBean.getAuthentication())
                         .request(MediaType.APPLICATION_JSON)
                         .get(new GenericType<List<Jogador>>() {});
             } catch (Throwable t) {

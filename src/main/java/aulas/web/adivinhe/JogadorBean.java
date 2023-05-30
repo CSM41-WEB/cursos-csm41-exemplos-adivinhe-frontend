@@ -1,8 +1,10 @@
 package aulas.web.adivinhe;
 
+import aulas.web.adivinhe.entity.Jogador;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
 /**
  * Representa a sessão do jogador.
@@ -15,13 +17,30 @@ public class JogadorBean implements Serializable {
     private int minimo = 1;
     private int maximo = 9;
     private int numTentativas = 0;
-    private String apelido;
-    private String nome;
-
+    
+    private Jogador jogador;
+    private BasicAuthentication authentication;
+    
     public JogadorBean() {
         novoNumero();
     }
 
+    public BasicAuthentication getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(BasicAuthentication authentication) {
+        this.authentication = authentication;
+    }
+    
+    public Jogador getJogador() {
+        return jogador;
+    }
+
+    public void setJogador(Jogador jogador) {
+        this.jogador = jogador;
+    }
+    
     public int getNumeroAtual() {
         return numeroAtual;
     }
@@ -52,22 +71,6 @@ public class JogadorBean implements Serializable {
 
     public void setNumTentativas(int numTentativas) {
         this.numTentativas = numTentativas;
-    }
-
-    public String getApelido() {
-        return apelido;
-    }
-
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     /**
