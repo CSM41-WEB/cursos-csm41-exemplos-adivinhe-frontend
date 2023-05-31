@@ -14,6 +14,7 @@
         <jakartaee>10.0.0</jakartaee>
         <primefaces>12.0.0</primefaces>
         <maven.compiler.release>17</maven.compiler.release>
+        <backend.host>localhost</backend.host>
     </properties>
     
     <dependencies>
@@ -63,4 +64,19 @@
             </plugin>
         </plugins>
     </build>
+    
+    <profiles>
+        <profile>
+            <id>container</id>
+            <activation>
+                <property>
+                    <name>container</name>
+                </property>
+            </activation>
+            <properties>
+                <skipTests>true</skipTests>
+                <backend.host>adivinhe-backend</backend.host>
+            </properties>
+        </profile>
+    </profiles>
 </project>
