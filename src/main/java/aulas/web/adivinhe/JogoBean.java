@@ -12,10 +12,9 @@ import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.MediaType;
 import java.io.Serializable;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ResourceBundle;
 
 /**
  * Suporte à página de adivinhação de número.
@@ -29,11 +28,14 @@ public class JogoBean implements Serializable {
     private boolean certo = false;
     private String senha;
 
+    private static final String URL_BACKEND =
+        ResourceBundle.getBundle("aulas.web.adivinhe.config").getString("adivinhe.backend.url");
+    
     private static final String MSG_ERRO_JOGO = "Erro ao salvar jogo";
     
     @Inject
     private JogadorBean jogadorBean;
-
+    
     public Integer getPalpite() {
         return palpite;
     }
@@ -65,7 +67,7 @@ public class JogoBean implements Serializable {
         jogo.setPontuacao(jogadorBean.getPontos());
         Entity<Jogo> entity = Entity.entity(jogo, MediaType.APPLICATION_JSON);
         try (Client client = ClientBuilder.newClient()) {
-            client.target("http://localhost:8084/jogo/new")
+            client.target(URL_BACKEND + "/jogo/new")
                 .register(jogadorBean.getAuthentication())
                 .request(MediaType.APPLICATION_JSON)
                 .post(entity);

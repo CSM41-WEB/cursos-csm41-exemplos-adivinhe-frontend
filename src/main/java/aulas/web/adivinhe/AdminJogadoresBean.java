@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Suporte à view de administração de jogadores.
@@ -24,6 +25,9 @@ public class AdminJogadoresBean implements Serializable {
     private static final String MSG_ERRO = "Não foi possível obter a lista de jogadores";
     
     private List<Jogador> jogadores;
+
+    private static final String URL_BACKEND =
+        ResourceBundle.getBundle("aulas.web.adivinhe.config").getString("adivinhe.backend.url");
     
     @Inject
     private JogadorBean jogadorBean;
@@ -34,7 +38,7 @@ public class AdminJogadoresBean implements Serializable {
     public List<Jogador> getJogadores() {
         if (jogadores == null) {
             try (Client client = ClientBuilder.newClient()) {
-                jogadores = client.target("http://localhost:8084/jogador/list")
+                jogadores = client.target(URL_BACKEND + "/jogador/list")
                         .register(jogadorBean.getAuthentication())
                         .request(MediaType.APPLICATION_JSON)
                         .get(new GenericType<List<Jogador>>() {});

@@ -14,7 +14,7 @@
         <jakartaee>10.0.0</jakartaee>
         <primefaces>12.0.0</primefaces>
         <maven.compiler.release>17</maven.compiler.release>
-        <backend.host>localhost</backend.host>
+        <backend.url>http://localhost:8084</backend.url>
     </properties>
     
     <dependencies>
@@ -41,6 +41,13 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
         <plugins>
             <plugin>
@@ -75,7 +82,7 @@
             </activation>
             <properties>
                 <skipTests>true</skipTests>
-                <backend.host>adivinhe-backend</backend.host>
+                <backend.url>http://adivinhe-backend:8084</backend.url>
             </properties>
         </profile>
     </profiles>

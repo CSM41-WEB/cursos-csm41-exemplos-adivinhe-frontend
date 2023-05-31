@@ -12,6 +12,7 @@ import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.core.MediaType;
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 
 /**
@@ -23,6 +24,9 @@ import org.jboss.resteasy.client.jaxrs.internal.BasicAuthentication;
 public class AcessoBean implements Serializable {
     private String usuario;
     private String senha;
+
+    private static final String URL_BACKEND =
+        ResourceBundle.getBundle("aulas.web.adivinhe.config").getString("adivinhe.backend.url");
     
     private static final String MSG_ERRO = "Erro inesperado de login";
     
@@ -63,7 +67,7 @@ public class AcessoBean implements Serializable {
         String action = null;
         var basicAuth = new BasicAuthentication(usuario, senha);
         try (Client client = ClientBuilder.newClient()) {
-            Jogador jogador = client.target("http://localhost:8084/jogador/info/apelido/{apelido}")
+            Jogador jogador = client.target(URL_BACKEND + "/jogador/info/apelido/{apelido}")
                     .register(basicAuth)
                     .resolveTemplate("apelido", usuario)
                     .request(MediaType.APPLICATION_JSON)
